@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Project on Validation</h1>
+    <form name="myForm" onsubmit="ValidateForm()">
+        <label><b>Name:</b></label>
+        <input type="text" name="fname" id="id1"><br><br>
+        <label><b>Age:</b></label>
+        <input type="number" name="fage" id="id2" min="18"><br><br>
+        <input type="submit" value="Submit"><br>
+    </form>
+        <p id="result"></p>
+
+    <script>
+        function ValidateForm(){
+            var name = document.forms["myForm"]["fname"].value;
+            var age = document.forms["myForm"]["fage"].value;
+
+            if (name=="" || age==""){
+                alert("Name and Age field cannot be left empty.");
+                return false;
+            }
+            else{
+                if (!age.checkValidity()){
+                    document.getElementById("result").innerHTML = age.validationMessage;
+                }
+                else{
+                    document.getElementById("result").innerHTML = "The form is submitted successfully.";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
